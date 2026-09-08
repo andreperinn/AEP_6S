@@ -8,7 +8,7 @@ Prova de Conceito (PoC) desenvolvida para a Atividade de Estudo Programada (AEP)
 |---|------------------------------------------------------------------|
 | **Curso** | Engenharia de Software                                           |
 | **Série** | 6º Semestre                                                      |
-| **Acadêmicos** | [André Perin Geraldo] [(RA: 24017529-2)] — [Marcos Vinicius de Azevedo Batista] (RA: [24055120-2]) |
+| **Acadêmicos** | André Perin Geraldo (RA: 24017529-2) — Marcos Vinicius de Azevedo Batista (RA: 24055120-2) |
 
 ## Problema
 
@@ -53,6 +53,7 @@ Funcionalidade implementada: cadastro, consulta, atualização e remoção de ca
 - **Maven** — gerenciador de build e dependências
 - **JUnit 5 + Testcontainers** — testes automatizados com MongoDB real em container Docker
 - **JaCoCo** — relatório de cobertura de testes
+- **springdoc-openapi (Swagger UI)** — documentação interativa da API, gerada automaticamente a partir do código
 
 ## Arquitetura do projeto
 
@@ -84,6 +85,14 @@ src/test/java/com/cultivaplus/AEP_6S/TestAep6SApplication.java
 
 Basta rodar essa classe (`Run` pela IDE, ou `mvn spring-boot:test-run`). A aplicação sobe em `http://localhost:8080`.
 
+Com a aplicação no ar, a forma mais simples de testar e explorar a API é pelo **Swagger UI**, disponível em:
+
+```
+http://localhost:8080/swagger-ui.html
+```
+
+Lá é possível ver todos os endpoints documentados e executar requisições reais direto do navegador, sem precisar de Postman ou qualquer ferramenta externa.
+
 Alternativamente, para rodar a aplicação "de produção" (`Aep6SApplication`) contra um MongoDB próprio, configure a URI de conexão em `src/main/resources/application.properties`:
 
 ```properties
@@ -96,7 +105,7 @@ spring.data.mongodb.uri=mongodb://localhost:27017/cultivaplus
 mvn test
 ```
 
-O relatório de cobertura (JaCoCo) é gerado automaticamente em `target/site/jacoco/index.html`.
+O relatório de cobertura (JaCoCo) é gerado automaticamente em `target/site/jacoco/index.html`. O build também aplica uma checagem automática: o `mvn test` **falha** se a cobertura de linhas ficar abaixo de 70%, garantindo que o requisito mínimo da AEP seja sempre respeitado.
 
 ## Endpoints da API
 
