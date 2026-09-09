@@ -12,23 +12,22 @@ Prova de Conceito (PoC) desenvolvida para a Atividade de Estudo Programada (AEP)
 
 ## Problema
 
-Hortas comunitárias urbanas em praças, terrenos cedidos, escolas ou condomínios — são uma ferramenta reconhecida de segurança alimentar e fortalecimento de vínculo comunitário. Na prática, porém, a maioria delas nasce com força e perde ritmo em poucos meses, não por falta de gente disposta a participar, e sim por falta de coordenação: não fica claro quem deveria cuidar de cada canteiro em determinado dia, o que está plantado em cada espaço, quando algo estará pronto para colher, e como dividir a produção entre os participantes sem gerar atrito.
+Muita horta comunitária começa animada e morre em poucos meses. Quase nunca falta gente disposta falta combinação. Ninguém sabe direito quem rega o quê na terça,
+o que foi plantado em cada canteiro, quando aquilo vai estar pronto pra colher e como dividir o que sair.
 
-O **Cultiva+** estrutura esse processo, hoje sustentado de forma informal (grupos de mensagens, cadernos, memória de alguém), em um sistema que dá visibilidade e organização ao trabalho coletivo da horta.
+Hoje isso vive no grupo do WhatsApp, num caderno ou na memória de alguém. O Cultiva+ junta tudo num lugar só.
 
 ## ODS relacionado
 
 **ODS 11 — Cidades e Comunidades Sustentáveis**
 
-Hortas comunitárias são um exemplo concreto de infraestrutura urbana sustentável gerida pelos próprios moradores. O Cultiva+ ataca diretamente o motivo mais comum pelo qual essas iniciativas falham — a falta de organização —, aumentando a chance de que sobrevivam e cresçam ao longo do tempo.
+Horta comunitária é a própria comunidade cuidando de um espaço urbano. O ponto em que essas iniciativas geralmente travam é a organização, e é aí que o Cultiva+ entra.
 
 ## Escopo desta entrega (1ª Entrega)
 
-Conforme os requisitos técnicos da 1ª entrega da AEP, esta versão trabalha com **uma única coleção NoSQL** (`canteiros`), com documentos homogêneos e estrutura simples (sem aninhamento), e opera com **CRUD básico** sobre essa coleção.
+A 1ª entrega pede uma coleção só, com documentos homogêneos e sem aninhamento, e CRUD básico em cima dela. É o que está aqui: a coleção `canteiros`, onde cada documento guarda o que foi plantado, quem é o responsável e a previsão de colheita.
 
-Funcionalidade implementada: cadastro, consulta, atualização e remoção de canteiros — cada canteiro registra o que está plantado, quem é o responsável e a previsão de colheita.
-
-> A evolução prevista para a 2ª entrega (múltiplas coleções relacionadas — hortas, escalas de cuidado, colheitas — com documentos aninhados) está descrita no enunciado da AEP e será tratada na próxima etapa do projeto.
+Na 2ª entrega isso cresce para várias coleções relacionadas (hortas, escalas de cuidado, colheitas) com documentos aninhados.
 
 ### Exemplo de documento (coleção `canteiros`)
 
@@ -77,7 +76,7 @@ controller/    → CanteiroController: endpoints REST (API HTTP)
 
 ### Rodando a aplicação
 
-A forma mais simples de rodar localmente, sem precisar instalar MongoDB manualmente, é executar a classe utilitária de testes que já sobe um MongoDB real em container automaticamente:
+A forma mais simples de rodar localmente, sem precisar instalar MongoDB manualmente, é executar a classe de testes que já sobe um MongoDB real em container automaticamente:
 
 ```
 src/test/java/com/cultivaplus/AEP_6S/TestAep6SApplication.java
