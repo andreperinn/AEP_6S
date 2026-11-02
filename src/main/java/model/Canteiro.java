@@ -12,17 +12,17 @@ public class Canteiro {
     @Id
     private String id;
     private String nome;
-    private String horta;
+    private String hortaId;
     private String cultivo;
     private String responsavel;
     private LocalDate dataPlantio;
     private LocalDate previsaoColheita;
     private Status status;
 
-    public Canteiro(String id, String nome, String horta, String cultivo, String responsavel, LocalDate dataPlantio, LocalDate previsaoColheita, Status status) {
+    public Canteiro(String id, String nome, String hortaId, String cultivo, String responsavel, LocalDate dataPlantio, LocalDate previsaoColheita, Status status) {
         this.id = id;
         this.nome = nome;
-        this.horta = horta;
+        this.hortaId = hortaId;
         this.cultivo = cultivo;
         this.responsavel = responsavel;
         this.dataPlantio = dataPlantio;
@@ -46,12 +46,12 @@ public class Canteiro {
         this.nome = nome;
     }
 
-    public String getHorta() {
-        return horta;
+    public String getHortaId() {
+        return hortaId;
     }
 
-    public void setHorta(String horta) {
-        this.horta = horta;
+    public void setHortaId(String hortaId) {
+        this.hortaId = hortaId;
     }
 
     public String getCultivo() {
