@@ -6,7 +6,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping("/canteiros")
@@ -24,7 +23,10 @@ public class CanteiroController {
     }
 
     @GetMapping
-    public List<Canteiro> listarTodos() {
+    public List<Canteiro> listar(@RequestParam(required = false) String hortaId) {
+        if (hortaId != null) {
+            return service.listarPorHorta(hortaId);
+        }
         return service.listarTodos();
     }
 
@@ -36,21 +38,13 @@ public class CanteiroController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Canteiro> atualizar(@PathVariable String id, @RequestBody Canteiro dadosAtualizados) {
-        try {
-            return ResponseEntity.ok(service.atualizar(id, dadosAtualizados));
-        } catch (NoSuchElementException e) {
-            return ResponseEntity.notFound().build();
-        }
+    public Canteiro atualizar(@PathVariable String id, @RequestBody Canteiro dadosAtualizados) {
+        return service.atualizar(id, dadosAtualizados);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> remover(@PathVariable String id) {
-        try {
-            service.remover(id);
-            return ResponseEntity.noContent().build();
-        } catch (NoSuchElementException e) {
-            return ResponseEntity.notFound().build();
-        }
+        service.remover(id);
+        return ResponseEntity.noContent().build();
     }
 }
